@@ -192,6 +192,21 @@
             'text-halo-width': 1
           }
         });
+
+        // Add click event listener to increase icon size
+        map.on('click', 'poi-icons', (e) => {
+          const features = map.queryRenderedFeatures(e.point, {
+            layers: ['poi-icons']
+          });
+
+          if (!features.length) return;
+
+          const feature = features[0];
+          const currentSize = map.getLayoutProperty('poi-icons', 'icon-size');
+          const newSize = currentSize + 0.1; // Increase size by 0.1
+
+          map.setLayoutProperty('poi-icons', 'icon-size', newSize);
+        });
       });
     });
   </script>
