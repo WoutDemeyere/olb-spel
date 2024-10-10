@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Mapbox POIs with Labels</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <!-- Mapbox GL JS CSS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <!-- Mapbox GL JS -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <script>
+    // Set your Mapbox access token
+    mapboxgl.accessToken = 'pk.eyJ1Ijoid291dGRlbWV5ZXJlIiwiYSI6ImNsaGtjc2IyMTBidTgzZm9wejE0YWw3NW0ifQ.bsbyzqo6S2bJrObFfLMhNw';
+
+    // Initialize the map
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v11', // Choose a Mapbox style
+      center: [ 3.438316847728358, 50.77962609247139 ], // Set initial map center [lng, lat]
+      zoom: 13 // Set initial zoom level
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // Your GeoJSON data
+    const geojsonData = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Stationsgebouw Avelgem"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.4429903211759245, 50.77079928094791 ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Pompgebouw Bossuit"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.4115558610991106, 50.74780364463725 ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Kanaal Bossuit"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.404220063864595, 50.75902132021254 ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Molen Outrijve"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.430761782542518, 50.760097293148675 ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Chiro Avelgem"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.438316847728358, 50.77962609247139 ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Jeugdhuis Krak Avelgem"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.4491468941890693, 50.775558799577524 ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Pizza Avelgem"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.465352611379471, 50.77952920182336 ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "De Ronde"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.4471706354919798, 50.77182409500465 ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Kasteel Bossuit"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.4020556690480714, 50.74862639041528 ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Gemeentehuis Avelgem"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [ 3.4442318668001937, 50.77588083424913 ]
+          }
+        }
+      ]
+    };
+
+    // Add the GeoJSON as a source when the map loads
+    map.on('load', () => {
+      // Load the image and add it to the map
+      map.loadImage('boenie.png', (error, image) => {
+        if (error) throw error;
+        map.addImage('boenie', image);
+
+        map.addSource('pois', {
+          'type': 'geojson',
+          'data': geojsonData
+        });
+
+        // Add a symbol layer for the POI icons
+        map.addLayer({
+          'id': 'poi-icons',
+          'type': 'symbol',
+          'source': 'pois',
+          'layout': {
+            'icon-image': 'boenie', // Use the loaded image
+            'icon-size': 0.1,
+            'icon-allow-overlap': true
+          },
+          'paint': {}
+        });
+
+        // Add a symbol layer for the POI labels
+        map.addLayer({
+          'id': 'poi-labels',
+          'type': 'symbol',
+          'source': 'pois',
+          'layout': {
+            'text-field': [ 'get', 'name' ],
+            'text-font': [ 'Open Sans Bold', 'Arial Unicode MS Bold' ],
+            'text-offset': [ 0, 1.2 ],
+            'text-anchor': 'top',
+            'text-size': 12,
+            'text-allow-overlap': false
+          },
+          'paint': {
+            'text-color': '#202', // Text color
+            'text-halo-color': '#fff', // Text halo color for better readability
+            'text-halo-width': 1
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

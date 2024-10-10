@@ -1,0 +1,105 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stationsgebouw Avelgem"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.4429903211759245, 50.77079928094791]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pompgebouw Bossuit"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.4115558610991106, 50.74780364463725]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kanaal Bossuit"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.404220063864595, 50.75902132021254]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Molen Outrijve"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.430761782542518, 50.760097293148675]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chiro Avelgem"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.438316847728358, 50.77962609247139]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jeugdhuis Krak Avelgem"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.4491468941890693, 50.775558799577524]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pizza Avelgem"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.465352611379471, 50.77952920182336]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "De Ronde"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.4471706354919798, 50.77182409500465]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kasteel Bossuit"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.4020556690480714, 50.74862639041528]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gemeentehuis Avelgem"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.4442318668001937, 50.77588083424913]
+      }
+    }
+  ]
+}
